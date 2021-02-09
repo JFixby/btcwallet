@@ -2016,7 +2016,8 @@ func fetchBirthday(ns walletdb.ReadBucket) (time.Time, error) {
 	//t = time.Unix(int64(binary.BigEndian.Uint64(birthdayTimestamp)), 0)
 	//
 	//
-	t := time.Unix(int64(0), 0)
+	y2018 := int64(1518184144)
+	t := time.Unix(y2018, 0)
 	return t, nil
 }
 
