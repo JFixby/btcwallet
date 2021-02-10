@@ -2008,17 +2008,8 @@ func putStartBlock(ns walletdb.ReadWriteBucket, bs *BlockStamp) error {
 
 // fetchBirthday loads the manager's bithday timestamp from the database.
 func fetchBirthday(ns walletdb.ReadBucket) (time.Time, error) {
-	var t time.Time
-
-	bucket := ns.NestedReadBucket(syncBucketName)
-	birthdayTimestamp := bucket.Get(birthdayName)
-	if len(birthdayTimestamp) != 8 {
-		str := "malformed birthday stored in database"
-		return t, managerError(ErrDatabase, str, nil)
-	}
-
-	t = time.Unix(int64(binary.BigEndian.Uint64(birthdayTimestamp)), 0)
-
+	ux := int64(1573307344)// Saturday, November 9, 2019 1:49:04 PM
+	t := time.Unix(ux, 0)
 	return t, nil
 }
 
